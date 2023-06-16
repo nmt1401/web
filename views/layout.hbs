@@ -93,22 +93,24 @@
   <div class="heading">
     <a class="tag" href="/cpanel/product">Diễn đàn</a>
     <a class="tag" href="/cpanel/product/new">Đăng bài</a>
-    <a style="padding-left: 65%;" class="tag">Đăng nhập</a>
-    <a class="tag">Đăng ký</a>
+    <a style="padding-left: 65%;" href="/login" class="tag">Đăng nhập</a>
+    <a class="tag" href="/register">Đăng ký</a>
   </div>
-  {{!-- <div class="list">
-    <div>
-      <form action="/action_page.php"></form>
-      <label for="sort">Chủ đề</label>
 
-      <select name="sort" id="sort">
-        <option id="stag" value="lost">Tìm thú cưng đi lạc</option>
-        <option id="stag" value="new">Nhận nuôi thú cưng</option>
-      </select>
+  <div class="list">
+    <div>
+      <form action="/cpanel/product/fil" method="post">
+
+        <label for="sort">Chủ đề</label>
+
+        <select name="sort" id="sort">
+          <option id="stag" value="64316da7fc13ae67c269e0a2">Tìm thú cưng đi lạc hehe</option>
+          <option id="stag" value="64316da7fc13ae67c269e0a5">Nhận nuôi thú cưng</option>
+        </select>
+        <button type="submit">Lọc</button>
       </form>
     </div>
-
-  </div> --}}
+  </div>
 
 </head>
 

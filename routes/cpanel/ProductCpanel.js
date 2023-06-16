@@ -9,8 +9,8 @@ const product = require('../../src/Product/ProductModel')
 //http://localhost:3000/cpanel/product
 // hien thi trang danh sach san pham
 router.get('/', async (req, res, next) => {
-    const product = await productController.getAllProduct();
-    res.render('product/sanpham', { product });
+    const nproduct = await productController.getAllProduct();
+    res.render('product/sanpham', { nproduct });
 });
 //http://localhost:3000/cpanel/product/:id/delete
 //xoa san pham theo id
@@ -55,6 +55,7 @@ router.post('/new', [uploadFile.single('image'),], async (req, res, next) => {
         const { name, detail, emailContact, phoneNumber, category, image } = body;
         const nproduct = new product(body)
         const result = await nproduct.save()
+        console.log(category)
         // const result = await productController.addNewProduct(name, detail, emailContact, phoneNumber, image, category);
         //console.log(nproduct)
 
@@ -110,5 +111,20 @@ router.post('/:id/edit', [uploadFile.single('image'),], async (req, res, next) =
     }
 
 });
+
+router.post('/fil', async (req, res) => {
+    // const product = await productController.getAllProduct();
+    // console.log(product)
+    console.log(req.body)
+    try {
+        const nproduct = await product.find({ category: req.body.sort })
+        console.log(nproduct)
+        res.render('product/sanpham', { nproduct });
+        //res.redirect('/cpanel/product', { nproduct });
+    } catch (e) {
+        console.log(e)
+    }
+
+})
 
 module.exports = router;

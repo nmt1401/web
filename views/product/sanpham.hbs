@@ -12,43 +12,44 @@
 </head>
 
 <body class="body">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-9" id="body">
-        <div id="table" style="overflow:scroll; height:80%;">
-          <table class="table table-striped" id="customers">
-            <tbody>
-              {{#each product}}
-              <tr id="item1">
-                <td class="item-2">
-                  <img src="/images/{{this.image}}" width="100" height="100" />
-                </td>
-                <td style="background-color:aliceblue">
-                  <div class="content"
-                    style="width: 200px; border: 1px solid black; border-radius: 5px; padding: 10px; ">
-                    {{this.name}}</div>
-                </td>
-                <td
-                  style="width:90% ; background-color:aliceblue; border: 1px; color:black; font-weight:bolder; font-size:larger">
-                  {{this.detail}}</td>
-                <td>
-                  <a class="btn btn-warning" href="/cpanel/product/{{this._id}}/edit">Update</a>
-                  <button type="button" class="btn btn-danger" data-id="{{this._id}}" data-bs-toggle="modal"
-                    data-bs-target="#xoa-baihoc">
-                    Delete
-                  </button>
-                </td>
-              </tr>
 
-              {{/each}}
+  <div class="row">
+    <div class="col-sm-9" id="body">
+      <div id="table" style="overflow:scroll; height:80%;">
+        <table class="table table-striped" id="customers">
+          <tbody>
+            {{#each nproduct}}
+            <tr id="item1">
+              <td class="item-2">
+                <img src="/images/{{this.image}}" width="100" height="100" />
+              </td>
+              <td style="background-color:aliceblue">
+                <div class="content" style="width: 200px; border: 1px solid black; border-radius: 5px; padding: 10px; ">
+                  {{this.name}}</div>
+              </td>
+              <td
+                style="width:90% ; background-color:aliceblue; border: 1px; color:black; font-weight:bolder; font-size:larger">
+                {{this.detail}}</td>
+              <td>
+                <a class="btn btn-warning" href="/cpanel/product/{{this._id}}/edit">Update</a>
+                <button type="button" class="btn btn-danger" data-id="{{this._id}}" data-bs-toggle="modal"
+                  data-bs-target="#xoa-baihoc">
+                  Delete
+                </button>
+              </td>
+            </tr>
 
-            </tbody>
-          </table>
-        </div>
+            {{/each}}
 
+          </tbody>
+        </table>
       </div>
 
     </div>
+
+  </div>
+
+
 
   </div>
 </body>

@@ -1,0 +1,26 @@
+#formnews{
+    border: 3px solid black;
+    border-radius: 5px;
+    box-shadow: 10px 10px;
+    background-color: antiquewhite;
+    width: 100%;
+    padding: 20px;
+    margin: auto;
+    margin-top: 20px;
+}
+input{
+    border-radius: 5px;
+    width: 100%;
+    padding: 10px;
+}
+.btnSubmit{
+    width: 30%;
+    margin: 30px 50px 10px 120px;
+    border-radius: 5px ;
+    background-color: blue;
+    color: white;
+}
+label{
+    font-weight: bold;
+    margin-top: 5px;
+}

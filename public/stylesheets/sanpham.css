@@ -1,0 +1,17 @@
+#body{
+    background-color: rgb(252, 252, 252);
+    height: auto;
+   
+}
+.table{
+    background-color: rgb(244, 244, 244);
+    border: 10px solid rgb(239, 2, 2);
+  
+}
+#table th{
+    background-color: #04AA6D;
+}
+h2{
+    text-align: center;
+    font-style: italic;
+}

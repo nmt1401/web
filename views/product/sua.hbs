@@ -1,0 +1,59 @@
+
+
+<div class="container mt-5">
+
+    <div class="row">
+
+        <div class="col-sm-9" id="body">
+            <h3>Cập nhật bài viết</h3>
+            <form id="formnews" action="/cpanel/product/{{product._id}}/edit" method="post" enctype="multipart/form-data">
+                <div id="formInput">
+                    <label for="fname">Tên</label><br>
+                    <input type="text" id="name" name="name" value="{{product.name}}"><br>
+                    <label for="lname">Nội dung</label><br>
+                    <input type="text" id="price" name="price" value="{{product.detail}}"><br>
+                    <label for="lname">Email liên hệ</label><br>
+                    <input type="email" id="quantity" name="quantity" value="{{product.emailContact}}"><br>
+                    <label for="lname">Số điện thoại</label><br>
+                    <input type="number" id="quantity" name="quantity" value="{{product.phoneNumber}}"><br>
+                    <div>
+                        <label for="lname">Hình ảnh (nếu có)</label><br>
+                        <input onchange="displayImg(this)" type="file" id="image" name="image" value=""><br>
+                        <img id="img"  src="{{product.image}}" width="100" height="100">
+                    </div>
+                    <div>
+                        <label>Category</label>
+                        <select name="category">
+                            {{#each categories}}
+                            {{#if this.selected}}
+                            <option selected value="{{this._id}}">{{this.name}}</option>
+                            {{else}}
+                            <option value="{{this._id}}">{{this.name}}</option>
+                            {{/if}}
+                            {{/each}}
+                        </select>
+                    </div>
+                    <button type="submit" class="btnSubmit">Xác nhận</button>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+</div>
+</div>
+
+<script>
+    //hien tam hinh moi thay hinh cu~
+    const displayImg =(input) => {
+        if(input.files && input.files[0]){
+            var reader=new FileReader();
+            reader.onload= function(e){
+                $('#img').attr('src',e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+      
+    }
+
+</script>

@@ -40,16 +40,16 @@ router.get('', async (req, res, next) => {
 });
 //http://localhost:3000/api/product/new
 // api them moi san pham
-router.post('/new',[checkTokenApp, upload.single('image')], async (req, res, next) => {
+router.post('/new', [checkTokenApp, upload.single('image')], async (req, res, next) => {
     try {
         let { body, file } = req;
         if (file) {
-            file = `http://192.168.1.12:3000/images/${file.filename}`;
-            body = { ...body, image: file };
+            namefile = file.filename;
+            body = { ...body, image: namefile };
         }
         const { name, detail, emailContact, phoneNumber, image, category } = body;
         await productController.addNewProduct(name, detail, emailContact, phoneNumber, image, category);
-        return res.status(200).json({ error: false, product: body, file });
+        return res.status(200).json({ error: false, product: body, namefile });
     } catch (error) {
         console.log('add product by name error', error);
         return res.status(500).json({ error: true, product: null });

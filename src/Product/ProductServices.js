@@ -11,20 +11,21 @@ const getAllProduct = async () => {
 
 }
 // lay toan bo san pham trong database
-const getAllProduct_V2 = async (page,size) => {
+const getAllProduct_V2 = async (page, size) => {
     //Đây là phân trang
-    let skip=(page-1)*size; // công thức tính
+    let skip = (page - 1) * size; // công thức tính
     let limit = size;
     try {
         // return data;
-        return await productModel
-        //select name, price, category from products
-        .find({},'name detail emailContact phoneNumber image category ') // chỉ lấy 2 trường name và price
-        .populate('category','name') //lấy thông tin category
-        .sort({price:1}) // sắp xếp theo giá tăng dần
-        .skip(0)//bỏ qua bao nhiêu sản phẩm
-        .limit(10)// giới hạn số lượng sản phẩm
-        
+        return await productModel.find({}).exec()
+        // //select name, price, category from products
+        // .find({}, 'name detail emailContact phoneNumber image category ') // chỉ lấy 2 trường name và price
+        // .populate('category', 'name') //lấy thông tin category
+        // .sort({ price: 1 }) // sắp xếp theo giá tăng dần
+        // .skip(0)//bỏ qua bao nhiêu sản phẩm
+        // .limit(100)// giới hạn số lượng sản phẩm
+
+
     } catch (error) {
         throw error;
     }
@@ -49,7 +50,7 @@ const deleteProductById = async (id) => {
 
 }
 // them moi san pham vao database
-const addNewProduct = async (name, detail, emailContact, phoneNumber ) => {
+const addNewProduct = async (name, detail, emailContact, phoneNumber) => {
     try {
         // const newProduct = {
         //     _id: data.length + 1,
@@ -61,7 +62,7 @@ const addNewProduct = async (name, detail, emailContact, phoneNumber ) => {
         // }
         // data.push(newProduct);
         const newProduct = {
-            name, detail, emailContact,phoneNumber
+            name, detail, emailContact, phoneNumber
         }
         const p = new productModel(newProduct);
         await p.save();
@@ -79,14 +80,14 @@ const getProductById = async (id) => {
         //     return product;
         // }
         // return null;
-        return await productModel.findById(id).populate('category','name');//mongodb
+        return await productModel.findById(id).populate('category', 'name');//mongodb
     } catch (error) {
         console.log('>>> Error:', error);
         return null;
     }
 }
 //cap nhat san pham theo id
-const updateProductById = async (id, name, detail, emailContact,phoneNumber, image, category) => {
+const updateProductById = async (id, name, detail, emailContact, phoneNumber, image, category) => {
     try {
         // const product = data.find(item => item._id.toString() == id.toString());
         // if (product) {
@@ -124,20 +125,20 @@ const updateProductById = async (id, name, detail, emailContact,phoneNumber, ima
     }
 }
 //tim kiem san pham theo ten
-const searchProductByName=async(name)=>{
+const searchProductByName = async (name) => {
     try {
         //tên có biểu thức chính quy ... không phân biệt chữ hoa thường
         return await productModel.find({
-            name:{$regex:name, $options:'i'},    
+            name: { $regex: name, $options: 'i' },
             // quantity:{$gt:10},  //số lượng lớn hơn 10
-            $or:[{quantity:{$lt:5}},{quantity:{$gt:50}}],//số lượng nhỏ hơn 5 hoặc lớn hơn 50
+            $or: [{ quantity: { $lt: 5 } }, { quantity: { $gt: 50 } }],//số lượng nhỏ hơn 5 hoặc lớn hơn 50
             //search giá tiền lớn hơn 10 và nhỏ hơn 100
-            price:{$gte:10,$lte:100}//greater than or equal 10, less than or equal 100
+            price: { $gte: 10, $lte: 100 }//greater than or equal 10, less than or equal 100
         });
         // giá tiền nằm trong khoảng từ 10 --> 100
-        
+
     } catch (error) {
-        console.log('Search Error',error);
+        console.log('Search Error', error);
     }
     return null;
 }

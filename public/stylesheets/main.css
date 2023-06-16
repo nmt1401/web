@@ -1,0 +1,45 @@
+#demo{
+    background-color: rgb(73, 137, 255);
+    height: 400px;
+    border-radius: 10px;
+    box-shadow: 10px 10px ;
+    margin-top: 50px;
+        
+}
+.nav{
+    border: 2px solid black;
+    border-radius: 5px;
+    margin-top: 10px;
+    background-color: beige;
+}
+.col-sm-9{
+    border: 2px solid black;
+    border-radius: 5px;
+   
+}
+.carousel-inner{
+    align-items: center;
+    margin-left: 250px;
+}
+.card-body{
+    border: 2px solid black;
+   border-radius: 5px;
+}
+.card-title{
+    padding: 10px;
+}
+.card-text {
+    padding: 10px;
+}
+.card-body a{
+   margin-left: 10px;
+   margin-bottom: 20px;
+}
+.nav-item{
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+#myChart{
+    margin: auto;
+    margin-top: 100px;
+}

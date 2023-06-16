@@ -1,0 +1,53 @@
+<style>
+    html, body
+        {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        },
+        .newform{
+            border: 1px solid black;
+            background-color: antiquewhite;
+            padding: 10px;
+        },
+        .form{
+            width: 100%;
+            align-items: center;
+            align-self: center;
+            align-content: center;
+        }
+</style>
+<div class="form" style="padding-top: 6%; width:100%">
+    <div class="row">
+        <div class="newform" id="body">
+            <h3>Đăng bài viết mới</h3>
+            <form class="newform" action="/cpanel/product/new" method="post" enctype="multipart/form-data">
+                <div id="formInput">
+                    <label for="fname">Người đăng</label><br>
+                    <input type="text" id="name" name="name" value=""><br>
+                    <label for="lname">Nội dung</label><br>
+                    <input type="text" id="detail" name="detail" value=""><br>
+                    <label for="lname">Email liên lạc</label><br>
+                    <input type="email" id="emailContact" name="emailContact" value=""><br>
+                    <label for="lname">Số điện thoại</label><br>
+                    <input type="number" id="phoneNumer" name="phoneNumber" value=""><br>
+                    <label for="lname">Hình ảnh (nếu có)</label><br>
+                    <input type="file" id="image" name="image" value=""><br>
+                    <div>
+                        <label>Chủ đề</label>
+                        <select name="category">
+                            {{#each categories}}
+                            <option value="{{this._id}}">{{this.name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <button type="submit" class="btnSubmit">Đăng bài</button>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+</div>
+</div>

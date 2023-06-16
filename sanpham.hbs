@@ -1,0 +1,88 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-3">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Trang chủ</a>
+          <a class="nav-link" href="/cpanel/product">Sản Phẩm</a>
+          <ul>
+            <li>
+              <a class="nav-link" href="/cpanel/product/new"> Thêm mới</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-9" id="body">
+      <h2>Danh sách thú cưng</h2>
+      <table class="table table-striped" id="customers">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Detail</th>
+            <th>Email and PhoneNumber</th>
+            <th>Image</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each product}}
+          <tr>
+            <td>{{this.name}}</td>
+            <td>{{this.detail}}</td>
+            <td>{{this.emailContact}}, {{this.phoneNumber}}</td>
+
+            <td>
+              <img src="{{this.image}}" width="100" height="100" />
+            </td>
+
+            <td><a href="/cpanel/product/{{this._id}}/edit">Cập nhật </a> | <a onclick="confirmDelete('{{this._id}}')"
+                href="#"> Xóa </a></td>
+          </tr>
+          {{/each}}
+
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+<script>
+  const fetchAPI = async (url, option) => {
+    const res = await fetch(url, option);
+    return res.json();
+  }
+  const deleteProduct = async (id) => {
+    const url = `http://localhost:3000/cpanel/product/${id}/delete`;
+    const option = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' }
+    }
+    try {
+      const result = await fetchAPI(url, option);
+      console.log('Delete result:', result);
+      if (result.status) {
+        window.location.reload();
+      } else {
+        swal("Xoa that bai!", {
+          icon: "error",
+        });
+      }
+
+    } catch (e) { console.log('Delete error:', e) }
+  }
+  const confirmDelete = (id) => {
+    swal({
+      title: "Are you sure?",
+      text: "Ban muon xoa ?!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+      .then((willDelete) => {
+        if (willDelete) {
+          deleteProduct(id);
+        }
+      });
+  }
+</script>

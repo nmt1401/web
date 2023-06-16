@@ -1,0 +1,68 @@
+
+<div class="container mt-5">
+
+    <div class="row">
+        <div class="col-sm-3">
+
+            <img class="card-img-top" src="./Images/1.jpg" alt="Card image" style="width:100%">
+            <div class="card-body">
+                <h4 class="card-title">John Doe</h4>
+                <p class="card-text">john@example.com</p>
+                <a href="profile.html" class="btn btn-primary">See Profile</a>
+            </div>
+
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="./main.html">Trang chủ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cpanel/product">Sản Phẩm</a>
+                    <ul>
+                        <li>
+                            <a href="/chitietsanpham.html" aria-hidden="true">Chi tiết sản phẩm</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="/cpanel/product/new"> Thêm mới</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+
+                    <a href="/nhacungcap.html">Nhà cung cấp</a>
+                    <a class="nav-link" href="/chart.html">Thống kê</a>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="col-sm-9" id="body">
+            <h3>Thêm mới sản phẩm</h3>
+            <form id="formnews" action="/cpanel/product/new" method="post" enctype="multipart/form-data">
+                <div id="formInput">
+                    <label for="fname">Name</label><br>
+                    <input type="text" id="name" name="name" value=""><br>
+                    <label for="lname">Detail</label><br>
+                    <input type="text" id="detail" name="detail" value=""><br>
+                    <label for="lname">EmailContact</label><br>
+                    <input type="email" id="emailContact" name="emailContact" value=""><br>
+                    <label for="lname">PhoneNumber</label><br>
+                    <input type="number" id="phoneNumer" name="phoneNumber" value=""><br>
+                    <label for="lname">Image</label><br>
+                    <input type="file" id="image" name="image" value=""><br>
+                    <div>
+                        <label>Category</label>
+                        <select name="category">
+                            {{#each categories}}
+                            <option value="{{this._id}}">{{this.name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <button type="submit" class="btnSubmit">Submit</button>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+</div>
+</div>
